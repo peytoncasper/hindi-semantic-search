@@ -28,7 +28,8 @@ This project demonstrates how to perform semantic search on multi-lingual datase
 
 To load data into the Pinecone index, run the `load.py` script with the dataset type as an argument:
 
-```python load.py <hindi|gujarati>
+```
+python load.py <hindi|gujarati>
 ```
 
 
