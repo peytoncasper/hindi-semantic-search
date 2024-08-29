@@ -34,18 +34,20 @@ dataset_type = sys.argv[1]
 if dataset_type == "hindi":
     dataset = parse_content_from_hindi_dataset("hindi_dataset.csv")
     embeddings = generate_embeddings(model, dataset)
-    for i, vector in enumerate(embeddings):
+    for i, (vector, text) in enumerate(zip(embeddings, dataset)):
         index.upsert(vectors=[{
             "id": str(i),
-            "values": vector
+            "values": vector,
+            "metadata": {"text": text}
         }])
 elif dataset_type == "gujarati":
     dataset = parse_content_from_gujarati_dataset("gujarati_dataset.csv")
     embeddings = generate_embeddings(model, dataset)
-    for i, vector in enumerate(embeddings):
+    for i, (vector, text) in enumerate(zip(embeddings, dataset)):
         index.upsert(vectors=[{
             "id": str(i),
-            "values": vector
+            "values": vector,
+            "metadata": {"text": text}
         }])
 else:
     print("Invalid dataset type. Use 'hindi' or 'gujarati'.")
